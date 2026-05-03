@@ -62,5 +62,9 @@ favoris(s: Suggestion) {
 
 showDetails(id: number) {
   this.router.navigate(['/suggestions', id]);
+
+}
+addSuggestion() {
+  this.router.navigate(['/suggestions/suggestion-form']);
 }
 }

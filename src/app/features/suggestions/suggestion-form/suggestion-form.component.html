@@ -1,0 +1,67 @@
+<form [formGroup]="suggestionForm" (ngSubmit)="onSubmit()">
+
+  <!-- Titre -->
+  <div class="form-group">
+    <label for="title">Titre :</label>
+    <input 
+      type="text" 
+      id="title" 
+      formControlName="title" 
+      placeholder="Titre de la suggestion">
+    <div *ngIf="submitted && title?.invalid" class="error">
+      <p *ngIf="title?.errors?.['required']">Le titre est obligatoire</p>
+      <p *ngIf="title?.errors?.['minlength']">Le titre doit contenir au minimum 5 caractères</p>
+      <p *ngIf="title?.errors?.['pattern']">Le titre doit commencer par une majuscule et ne contenir que des lettres</p>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="form-group">
+    <label for="description">Description :</label>
+    <textarea 
+      id="description" 
+      formControlName="description" 
+      placeholder="Description de la suggestion"
+      rows="5"></textarea>
+    <div *ngIf="submitted && description?.invalid" class="error">
+      <p *ngIf="description?.errors?.['required']">La description est obligatoire</p>
+      <p *ngIf="description?.errors?.['minlength']">La description doit contenir au minimum 30 caractères</p>
+    </div>
+  </div>
+
+  <!-- Catégorie -->
+  <div class="form-group">
+    <label for="category">Catégorie :</label>
+    <select id="category" formControlName="category">
+      <option value="" disabled>Sélectionnez une catégorie</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+    <div *ngIf="submitted && category?.invalid" class="error">
+      <p *ngIf="category?.errors?.['required']">La catégorie est obligatoire</p>
+    </div>
+  </div>
+
+  <!-- Date -->
+  <div class="form-group">
+    <label for="date">Date :</label>
+    <input 
+      type="text" 
+      id="date" 
+      value="23/1/2025"
+      disabled>
+  </div>
+
+  <!-- Statut -->
+  <div class="form-group">
+    <label for="status">Statut :</label>
+    <input 
+      type="text" 
+      id="status" 
+      value="en attente"
+      disabled>
+  </div>
+
+  <!-- Bouton Soumettre -->
+  <button type="submit" class="btn-submit">Soumettre</button>
+
+</form>
