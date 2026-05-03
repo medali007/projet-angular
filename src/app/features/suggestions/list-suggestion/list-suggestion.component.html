@@ -1,0 +1,32 @@
+<input [(ngModel)]="searchText" placeholder="Rechercher..." />
+
+<div *ngFor="let s of suggestions">
+
+  <div *ngIf="!searchText || 
+              s.title.toLowerCase().includes(searchText.toLowerCase()) || 
+              s.category.toLowerCase().includes(searchText.toLowerCase())">
+
+    <h3>{{ s.title }}</h3>
+
+    <p>{{ s.description }}</p>
+    <p>Catégorie : {{ s.category }}</p>
+    <p>Date : {{ s.date | date:'dd/MM/yyyy' }}</p>
+    <p>Likes : {{ s.nbLikes }}</p>
+
+    <button *ngIf="s.status !== 'refusee'" (click)="like(s)">
+      Like
+    </button>
+
+    <button *ngIf="s.status !== 'refusee'" (click)="favoris(s)">
+      Ajouter aux favoris
+    </button>
+
+    <button (click)="showDetails(s.id)">
+      Details
+    </button>
+
+    <hr>
+
+  </div>
+
+</div>
