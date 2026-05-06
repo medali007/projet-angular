@@ -7,8 +7,9 @@ import { SuggestionFormComponent } from './suggestion-form/suggestion-form.compo
 
 const routes: Routes = [{ path: '', component: SuggestionsComponent },
   { path: 'suggestions', component: ListSuggestionComponent },
+  {path: 'add', component: SuggestionFormComponent},
+
   {path : ':id', component: SuggestionsDetailsComponent},
-  {path: 'suggestion-form', component: SuggestionFormComponent}
 ];
 
 @NgModule({
